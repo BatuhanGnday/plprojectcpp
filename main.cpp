@@ -7,9 +7,6 @@
 
 using namespace std;
 
-// List of goal strings.
-vector<string> goals;
-
 // Returns true if first and last characters
 // of s are same.
 int checkEquality(string s)

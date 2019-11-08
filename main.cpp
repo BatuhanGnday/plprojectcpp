@@ -17,10 +17,8 @@ int checkEquality(string s)
     return (s[0] == s[s.size() - 1]);
 }
 
-
-int countGoalSubstrings(string s)
-{
-    int result = 0;
+vector<string> goalSubstrings(string s){
+    vector<string> goals;
     int n = s.length();
 
     // Starting point of substring
@@ -32,12 +30,11 @@ int countGoalSubstrings(string s)
             // Check if current substring has same
             // starting and ending characters.
             if (checkEquality(s.substr(i, len))) {
-                result++;
                 // Push the goal strings to the
                 // goals vector which has string type.
                 goals.push_back(s.substr(i, len));
             }
-    return result;
+    return goals;
 }
 
 // Driver function
@@ -53,10 +50,11 @@ int main()
     }
 
     infile.close();
-    cout << countGoalSubstrings(STRING) << "\n";
-    for(int i = 0; i<goals.size(); i++){
-        cout << goals.at(i) << " ";
+
+    for(int i = 0; i<goalSubstrings(STRING).size() ; i++){
+        cout << goalSubstrings(STRING).at(i) << ", ";
     }
+    cout << "\nNum of substrings: " << goalSubstrings(STRING).size();
     return 0;
 }
 

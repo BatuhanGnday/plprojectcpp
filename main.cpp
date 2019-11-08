@@ -3,8 +3,12 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
 
 using namespace std;
+
+// List of goal strings.
+vector<string> goals;
 
 // Returns true if first and last characters
 // of s are same.
@@ -12,6 +16,7 @@ int checkEquality(string s)
 {
     return (s[0] == s[s.size() - 1]);
 }
+
 
 int countGoalSubstrings(string s)
 {
@@ -26,9 +31,12 @@ int countGoalSubstrings(string s)
 
             // Check if current substring has same
             // starting and ending characters.
-            if (checkEquality(s.substr(i, len)))
+            if (checkEquality(s.substr(i, len))) {
                 result++;
-
+                // Push the goal strings to the
+                // goals vector which has string type.
+                goals.push_back(s.substr(i, len));
+            }
     return result;
 }
 
@@ -45,7 +53,10 @@ int main()
     }
 
     infile.close();
-    cout << countGoalSubstrings(STRING);
+    cout << countGoalSubstrings(STRING) << "\n";
+    for(int i = 0; i<goals.size(); i++){
+        cout << goals.at(i) << " ";
+    }
     return 0;
 }
 
